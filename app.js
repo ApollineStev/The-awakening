@@ -13,10 +13,9 @@ let result = document.querySelector('.result')
 start.addEventListener('click', () => {
     start.removeAttribute('id')
     moveGhost()
-    whack()
+    whack(ghost)
 
 })
-
 
 function randomPentacle() {
     ghost.forEach(element => {
