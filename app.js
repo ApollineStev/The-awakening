@@ -55,9 +55,9 @@ function randomPentacle() {
 
     if(wormSum === 5){
         end.style.visibility = "visible"
+        clearInterval(timer)
         console.log('game over')
     }
-
     
 
 }
