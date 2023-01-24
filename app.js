@@ -24,8 +24,7 @@ function randomPentacle() {
     
     ghost.forEach(element => {
         element.classList.remove('ghost')
-        
-        
+           
     });
     let randomPentacle = ghost[Math.floor(Math.random() * 12)]
     randomPentacle.classList.add('ghost')
@@ -37,25 +36,25 @@ function randomPentacle() {
         
         }
         
-    }, 999)
+    }, 1000)
 
-    ghost.forEach(element => {
+    /*ghost.forEach(element => {
         element.classList.contains('worm')
         wormSum += 1
         life.innerHTML = wormSum
     })
-    
+    */
 }
 
 function moveGhost() {
    let timer = null
-   timer = setInterval(randomPentacle, 1000)
+   timer = setInterval(randomPentacle, 1001)
 }
 
 ghost.forEach(ghost => {
     
     ghost.addEventListener('click', () => {
-       if(ghost.classList.contains('ghost') && ghost.classList.contains('ghost')){
+       if(ghost.classList.contains('ghost')){
           ghost.classList.remove('ghost')
         score += 10
         result.innerHTML = score
@@ -72,8 +71,11 @@ ghost.forEach(ghost => {
 
 
 function gameOver() {
-   if(score == 30){
+   if(score >= 30){
     end.style.visibility = "visible"
+    score = 0
+    wormSum = 0
+
    }
 }
 
