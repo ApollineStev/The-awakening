@@ -11,13 +11,13 @@ let result = document.querySelector('.result')
 let end = document.querySelector('#game-over')
 let score = 0
 
-
+let timer = null
 
 
 start.addEventListener('click', () => {
     start.remove('id')
     cleanBoard()
-    moveGhost()
+    timer = setInterval(randomPentacle, 1250)
 
 })
 
@@ -30,7 +30,10 @@ function randomPentacle() {
     });
 
     let randomPentacle = ghost[Math.floor(Math.random() * ghost.length)]
-    randomPentacle.classList.add('ghost')
+    if(ghost.classList !== 'worm'){
+        randomPentacle.classList.add('ghost')
+    }
+    
 
     
     setTimeout(() => {
@@ -53,30 +56,21 @@ function randomPentacle() {
 
     
 
-    if(wormSum === 5){
+    if(wormSum === 13){
         end.style.visibility = "visible"
-        clearInterval(timer)
         console.log('game over')
+        
     }
     
 
-}
-
-function moveGhost() {
-   let timer = null
-   timer = setInterval(randomPentacle, 1250)
-   if(ghost.classList == 'worm'){
-    let randomPentacle = ghost[Math.floor(Math.random() * ghost.length)]
-    randomPentacle.classList.add('ghost')
-    return timer
-   }
-}
+} 
+ 
 
 replay.addEventListener('click', () => {
     end.style.visibility = 'hidden'
+    clearInterval(timer)
     cleanBoard()
-    moveGhost()
-
+    timer = setInterval(randomPentacle, 1250)
     
 })
 
