@@ -160,6 +160,8 @@ h2{
 #game-over h2{
    font-size: 100px;
 }
+
+
 #game-over button{
     color: rgb(109, 12, 12);
     width: 350px;
