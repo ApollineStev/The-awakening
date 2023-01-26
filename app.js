@@ -17,7 +17,7 @@ let timer = null
 start.addEventListener('click', () => {
     start.remove('id')
     cleanBoard()
-    timer = setInterval(randomPentacle, 1250)
+    timer = setInterval(randomPentacle, 1000)
 
 })
 
@@ -32,6 +32,7 @@ function randomPentacle() {
     let randomPentacle = ghost[Math.floor(Math.random() * ghost.length)]
     if(ghost.classList !== 'worm'){
         randomPentacle.classList.add('ghost')
+        
     }
     
 
@@ -45,18 +46,18 @@ function randomPentacle() {
         }
         return wormSum
         
-    }, 1000)
+    }, 750)
 
 
     ghost.forEach(ghost => {
-        if(ghost.classList == 'worm'){
+        if(ghost.classList.contains('worm')){
             return randomPentacle
         }
     })
 
     
 
-    if(wormSum === 5){
+    if(wormSum === 10){
         end.style.visibility = "visible"
         console.log('game over')
         
