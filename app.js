@@ -6,7 +6,7 @@ let ghost = document.querySelectorAll('.ghost')
 let worm = document.querySelectorAll('.worm')
 let life = document.querySelector('.life')
 let wormSum = 0
-let lastPentacle
+let lastScore = document.querySelector('score-final')
 let result = document.querySelector('.result')
 let end = document.querySelector('#game-over')
 let score = 0
@@ -28,14 +28,24 @@ function randomPentacle() {
     ghost.forEach(element => {
         element.classList.remove('ghost')       
     });
-
+/*
     let randomPentacle = ghost[Math.floor(Math.random() * ghost.length)]
-    if(ghost.classList !== 'worm'){
+    console.log(ghost)
+    if(ghost.classList.contains('worm')){
         randomPentacle.classList.add('ghost')
         
     }
-    
+    */
 
+    let pentaclesArray = [...ghost]
+    let pentaclesWithoutWorms = pentaclesArray.filter((pentacle) =>{
+        if (!pentacle.classList.contains('worm')){
+            return pentacle
+        }
+    })
+
+    let randomPentacle = pentaclesWithoutWorms[Math.floor(Math.random() * pentaclesWithoutWorms.length)]
+    randomPentacle.classList.add('ghost')
     
     setTimeout(() => {
         if (randomPentacle.classList == 'ghost'){
@@ -59,8 +69,7 @@ function randomPentacle() {
 
     if(wormSum === 10){
         end.style.visibility = "visible"
-        console.log('game over')
-        
+        lastScore.innerHTML = score
     }
     
 
