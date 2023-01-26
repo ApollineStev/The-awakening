@@ -67,11 +67,9 @@ function randomPentacle() {
 
     
 
-    if(wormSum === 10){
-        end.style.visibility = "visible"
-        lastScore.innerHTML = score
+    if(wormSum === 5){
+        end.style.visibility = "visible"  
     }
-    
 
 } 
  
